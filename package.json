@@ -1,0 +1,33 @@
+{
+  "name": "riot-compiler-loader",
+  "version": "0.1.0",
+  "description": "A loader of webpack to compile riot tags by riot-compiler@4.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karak/riot-compiler-loader.git"
+  },
+  "keywords": [
+    "webpack",
+    "riotjs",
+    "riot-compiler"
+  ],
+  "author": "Karak <karak97@gmail.com> (https://github.com/karak)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karak/riot-compiler-loader/issues"
+  },
+  "homepage": "https://github.com/karak/riot-compiler-loader#readme",
+  "dependencies": {
+    "loader-utils": "^1.2.3"
+  },
+  "devDependencies": {
+    "@riotjs/compiler": "^4.0.0-alpha.6"
+  },
+  "peerDependencies": {
+    "@riotjs/compiler": "^4.0.0-alpha.6"
+  }
+}
