@@ -1,6 +1,6 @@
 {
   "name": "riot-compiler-loader",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A loader of webpack to compile riot tags by riot-compiler@4.",
   "main": "index.js",
   "scripts": {
