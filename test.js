@@ -26,8 +26,27 @@ const COMPONENT_TAG = `
 </component>
 `
 
-function kickLoader(tag, callback) {
-  loader.apply({ callback }, [tag]);
+const SCOPED_TAG = `
+<x-button>
+  <span></span>
+  <style>
+  :host { color: red }
+  </style>
+</x-button>
+`
+
+function kickLoader(tag, options, callback) {
+  if (arguments.length < 3) {
+    callback = options;
+    options = {};
+  }
+
+  const query = Object.entries(options).reduce(
+    (accum, [key, value]) => `${accum}&${key}=${value}`,
+    "?"
+  );
+
+  loader.apply({ callback, query }, [tag]);
 }
 
 it("generates code and map", done => {
@@ -51,6 +70,15 @@ it("generates code with specified structure", done => {
     expect(tagImpl.template).toBeDefined();
     expect(tagImpl.tag).toBeDefined();
     expect(tagImpl.tag.foo()).toBe("foo");
+    done();
+  });
+});
+
+
+it("disables Scoped CSS by Option", done => {
+  kickLoader(SCOPED_TAG, { scopedCss: false }, (_, code) => {
+    const tagImpl = evalModule(code);
+    expect(tagImpl.css.trim()).toBe(`:host { color: red }`);
     done();
   });
 });
