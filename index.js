@@ -16,5 +16,5 @@ module.exports = function(source) {
 
   // compile to generate entities
   const { code, map } = compile(source, opts);
-  return { code, map };
+  this.callback(null, code, map);
 };

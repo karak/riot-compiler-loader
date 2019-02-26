@@ -6,11 +6,18 @@ const MY_BUTTON_TAG = `
 </my-button>
 `;
 
-it("generates code and map", () => {
-  const { code, map, meta } = loader(MY_BUTTON_TAG);
+function kickLoader(tag, callback) {
+  loader.apply({ callback }, [tag]);
+}
 
-  expect(code).not.toBeNull();
-  expect(map).not.toBeNull();
-  expect(meta).toBeUndefined();
+it("generates code and map", done => {
+
+  kickLoader(MY_BUTTON_TAG, (error, code, map, meta) => {
+    expect(error).toBeNull();
+    expect(code).not.toBeNull();
+    expect(map).not.toBeNull();
+    expect(meta).toBeUndefined();
+    done();
+  });
 });
 
