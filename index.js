@@ -15,12 +15,6 @@ module.exports = function(source) {
   if (this.cacheable) this.cacheable();
 
   // compile to generate entities
-  const callback = this.async();
-  compile(source, opts)
-    .then(({ code, map }) => {
-      callback(null, code, map);
-    })
-    .catch(err => {
-      callback(err);
-    });
+  const { code, map } = compile(source, opts);
+  return { code, map };
 };
