@@ -68,8 +68,8 @@ it("generates code with specified structure", done => {
     expect(tagImpl.name).toBe("component");
     expect(tagImpl.css.trim()).toBe(`component span,[is="component"] span{\n    color: red;\n  }`);
     expect(tagImpl.template).toBeDefined();
-    expect(tagImpl.tag).toBeDefined();
-    expect(tagImpl.tag.foo()).toBe("foo");
+    expect(tagImpl.exports).toBeDefined();
+    expect(tagImpl.exports.foo()).toBe("foo");
     done();
   });
 });
